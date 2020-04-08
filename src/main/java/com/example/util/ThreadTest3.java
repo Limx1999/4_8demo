@@ -13,12 +13,16 @@ package com.example.util;/**
  */
 public class ThreadTest3 extends Thread{
        public  void run(){
-           //任务
-           System.out.println("你好 杰克");
+          new Thread(() ->{
+               System.out.println(Thread.currentThread().getPriority()
+               );
+           },"线程one").start();
        }
 
     //这种方式不好
     public static void main(String[] args) {
-        new ThreadTest3().start();
+        ThreadTest3 threadTest3 =       new ThreadTest3();
+        threadTest3.setPriority(1);
+        threadTest3.start();
     }
 }
