@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.dao.FoodDao" >
+    <select id="getFoodList" resultType="com.example.pojo.Food">
+        select * from t_food
+    </select>
+    <select id="getCron" resultType="java.lang.String">
+        select cron from cron limit 1
+    </select>
+    <select id="userLogin" resultType="com.example.pojo.User">
+        select * from user where uname = #{uname} and upassword = #{upassword}
+    </select>
+    <select id="queryUSer" resultType="com.example.pojo.User" parameterType="com.example.pojo.User">
+        select * from user
+        <where>
+            <if test="user.uname!='' and user.uname!=null">
+                and  uname = #{user.uname}
+            </if>
+            <if test="user.uage!=null">
+                and  uage = #{user.uage}
+            </if>
+        </where>
+    </select>
+</mapper>

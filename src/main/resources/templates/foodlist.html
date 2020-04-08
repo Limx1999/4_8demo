@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<span th:text="${userList}"></span>
+<table class="layui-table">
+    <tr th:each="item,userStat:${userList}">
+        <td th:text="${userStat.index}+1"></td>
+        <td th:text="${userStat.current.key}"></td><!-- key-->
+        <td th:text="${userStat.current.value}"></td><!-- value-->
+    </tr>
+</table>
+</body>
+</html>
